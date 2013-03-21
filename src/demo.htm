@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>JSWordsFilter Demo</title>
+    <style>
+        .hint {
+            font:500 11px verdana;
+            color:#6b6a6a;
+        }
+    </style>
+    <script src="JSWordsFilter.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+<body>
+    <h1>JSWordsFilter Demo</h1>
+
+    <div id="content">
+        <h2>Blacklist</h2>
+        <textarea id="blacklist">badword,badlanguage</textarea><br />&nbsp;<br />
+        <input type="text" id="filterChar" value="#"/> <span class="hint">(replacement for filtered words)</span><br />
+        <input type="text" id="tolerance" value="0.3"/> <span class="hint">(if 20% match then filter the word)</span><br />
+        <input type="text" id="threshold" value="3"/> <span class="hint">(words with three characters or less will get filtered only on exact match => tolerance is ignored)</span><br />
+        
+
+
+        <h2>Sentence</h2>
+        <input type="text" id="sentence" value="This is a b4dw0rd"/> ==> <input type="text" id="filteredsentence" />
+
+        <button id="btnFilter">Filter</button>
+    </div>
+
+    <script>
+        var blacklist = []
+        var jswf = new Ezelia.JSWordsFilter({
+            blacklist: blacklist,
+            filterChar: '#', /*replacement for filtered words*/
+            tolerance: 0.3,  /*if 20% match then filter the word*/
+            threshold: 3     /*words with three characters or less will get filtered only on exact match => tolerance is ignored */
+        });
+
+        $('#btnFilter').click(function () {
+
+            jswf.filterChar = $('#filterChar').val();
+            jswf.tolerance = $('#tolerance').val();
+            jswf.threshold = $('#threshold').val();
+
+            jswf.blacklist = $('#blacklist').val().split(',');
+
+
+            var sentence = $('#sentence').val();
+            var filtered = jswf.filter(sentence);
+
+
+            $('#filteredsentence').val(filtered);
+        });
+    </script>
+</body>
+</html>

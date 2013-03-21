@@ -3,7 +3,7 @@ JSWordsFilter
 
 JSWordsFilter is a Javascript bad words filter, it uses [Levenshtein distance](http://en.wikipedia.org/wiki/Levenshtein_distance) to match approximative words or bad typed words aswell.
 
-see online demo [here](http://htmlpreview.github.com/?https://github.com/alaa-eddine/JSWordsFilter/master/demo.htm)
+see online demo [here](http://htmlpreview.github.com/?https://github.com/Ezelia/JSWordsFilter/master/demo.htm)
 
 
 Usage
